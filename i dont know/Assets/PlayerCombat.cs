@@ -24,8 +24,8 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            print(GetComponent<GameObject>().name);
-            Destroy(enemy.GetComponent<GameObject>());
+            print(enemy.gameObject.name);
+            Destroy(enemy.gameObject);
         }
     }
 
