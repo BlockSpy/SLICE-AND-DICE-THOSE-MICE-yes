@@ -23,13 +23,14 @@ public class PlayerCombat_Boss : MonoBehaviour
 
     void Attack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers, bossLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitBosses = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, bossLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit " + enemy.name);
             Destroy(enemy.gameObject);
         }
-        foreach (Collider2D boss in hitEnemies)
+        foreach (Collider2D boss in hitBosses)
         {
             boss.GetComponent<Boss_Health>().TakeDamage(attackDamage);
         }
